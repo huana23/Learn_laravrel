@@ -59,8 +59,8 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="backend/js/jquery-3.1.1.min.js"></script>
-    <script src="backend/js/bootstrap.min.js"></script>
+    <script src="{{ asset('backend/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
 
 </body>
 

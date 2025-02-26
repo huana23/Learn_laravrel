@@ -20,7 +20,7 @@
                 <span class="input-group-append">
                     <button type="submit" name="search" value="search" class="btn btn-primary btn-sm">Tìm kiếm</button>
                 </span>
-                <a href="" class="btn btn-danger ml-3">
+                <a href="{{route('user.create')}}" class="btn btn-danger ml-3">
                     <i class="fa fa-plus"></i> Thêm mới thành viên
                 </a>
             </div>

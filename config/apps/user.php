@@ -1,5 +1,11 @@
 <?php 
 return [
-    'title' => 'Quản lí thành viên',
-    'tableHeading' => 'Danh sách nhân viên'
+    'index' => [
+        'title' => 'Quản lí thành viên',
+        'table' => 'Danh sách nhân viên'
+    ],
+    'create' => [
+        'title' => 'Thêm mới thành viên',
+        
+    ]
 ];
