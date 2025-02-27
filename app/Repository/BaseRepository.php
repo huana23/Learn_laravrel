@@ -28,7 +28,10 @@ class BaseRepository implements BaseRepositoryInterface
 
     }
 
-
+    public function update(int $id = 0, array $payLoad = []) {
+        $model = $this->findById($id);
+        return $model->update($payLoad);
+    }
 
     public function all() {
         return $this->model->all();

@@ -36,8 +36,7 @@ class UserService implements UserServiceInterface
         try{
 
             $payLoad = $request->except(['_token','send','re_password']);
-            $carbonDate = Carbon::createFromFormat('Y-m-d', $payLoad['birthday']);
-            $payLoad['birthday'] = $carbonDate->format('Y-m-d H:i:s');
+            $payLoad['birthday'] = $this->coverBirthdayDate($payLoad['birthday']);
             $payLoad['password'] = Hash::make( $payLoad['password']);
 
 
@@ -53,4 +52,43 @@ class UserService implements UserServiceInterface
         }
     
     }
+
+    public function update($id,$request){
+        DB::beginTransaction();
+        try{
+            $payLoad = $request->except(['_token','send']);
+            $payLoad['birthday'] = $this->coverBirthdayDate($payLoad['birthday']);
+           
+
+
+
+            $user = $this->userRepository->update($id,$payLoad);
+
+            DB::commit();
+            return true;
+        }catch(\Exception $e) {
+            DB::rollBack();
+            echo $e->getMessage();die();
+            return false;
+        }
+    
+    }
+
+    private function coverBirthdayDate($birthday = '') {
+        // Kiểm tra xem ngày có hợp lệ không trước khi xử lý
+        if (!$birthday || !\Carbon\Carbon::hasFormat($birthday, 'Y-m-d')) {
+            // Xử lý khi ngày nhập không hợp lệ (ví dụ: ghi log, ném ngoại lệ, hoặc trả về giá trị mặc định)
+            Log::error("Định dạng ngày sinh không hợp lệ: " . $birthday);
+            return null; // Hoặc trả về ngày mặc định
+        }
+        
+        try {
+            $carbonDate = Carbon::createFromFormat('Y-m-d', $birthday);
+            return $carbonDate->format('Y-m-d H:i:s');
+        } catch (\Exception $e) {
+            Log::error("Lỗi khi phân tích ngày sinh: " . $birthday . " với thông báo lỗi: " . $e->getMessage());
+            return null; // Hoặc trả về ngày mặc định
+        }
+    }
+    
 }

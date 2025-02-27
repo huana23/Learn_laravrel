@@ -9,6 +9,8 @@ use App\Services\Interfaces\UserServiceInterface as UserService;
 use App\Repository\Interfaces\ProvinceRepositoryInterface as ProvinceRepository; 
 use App\Repository\Interfaces\UserRepositoryInterface as UserRepository; 
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+
 
 
 class UserController extends Controller
@@ -115,7 +117,10 @@ class UserController extends Controller
        ));
     }
 
-    public function update($id) {
-        echo $id; die();
+    public function update($id, UpdateUserRequest $request) {
+        if($this->userService->update($id, $request)){
+            return redirect()->route('user.index')->with('success', 'Cập Nhật bản ghi thành công');
+        }
+        return redirect()->route('user.index')->with('error', 'Cập Nhật bản ghi thất bại');
     }
 }

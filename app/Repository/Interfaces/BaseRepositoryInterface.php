@@ -11,4 +11,6 @@ interface BaseRepositoryInterface
     public function all();
 
     public function findById(int $id);
+    public function create(array $payLoad);
+    public function update(int $id = 0, array $payLoad = []);
 }
