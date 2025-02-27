@@ -34,8 +34,8 @@ class UserController extends Controller
     }
     
 
-    public function index(){
-        $users = $this->userService->paginate();
+    public function index(Request $request){
+        $users = $this->userService->paginate($request);
 
 
         $config =  [

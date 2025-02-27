@@ -31,19 +31,9 @@
                 <div class="address-item name">
                     {{ $user->address }}
                 </div>
-                <div class="address-item email">
-                    Phường : {{ $user->ward_id }}
-                </div>
-                <div class="address-item phone">
-                    Quận/Huyện : {{ $user->district_id }}
-                </div>
-                <div class="address-item phone">
-                    Thành phố : {{ $user->province_id }}
-                    
-                </div>
             </td>
             <td> 
-                <input type="checkbox" class="js-switch" checked/>
+                <input type="checkbox" value="{{$user->publish}}" class="js-switch" {{($user->publish == 1) ? 'checked' : ''}}/>
             </td>
             <td class="text-center">
                 <a href="{{route('user.edit', $user->id)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>

@@ -24,13 +24,14 @@ class UserService implements UserServiceInterface
     {
         $this->userRepository = $userRepository;
     }
-    public function paginate()
+    public function paginate($request)
     {
-        $users = $this->userRepository->getAllPaginate();
+        $condition['keyword'] = addslashes($request->input('keyword')) ;
+        $perPage = $request->integer('perpage');
+        $users = $this->userRepository->pagination($this->paginateSelect(), $condition, [], ['path' => 'index'],$perPage);
         return $users;
         
     }
-
     public function create($request){
         DB::beginTransaction();
         try{
@@ -103,6 +104,10 @@ class UserService implements UserServiceInterface
             Log::error("Lỗi khi phân tích ngày sinh: " . $birthday . " với thông báo lỗi: " . $e->getMessage());
             return null; // Hoặc trả về ngày mặc định
         }
+    }
+
+    private function paginateSelect() {
+        return ['id','email','name','phone', 'address', 'publish'];
     }
     
 }
