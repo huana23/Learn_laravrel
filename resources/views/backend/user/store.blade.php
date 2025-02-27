@@ -81,7 +81,7 @@
                                     <label for="" class="control-label text-right">Ngày sinh
                                        
                                     </label>
-                                    <input type="date" name="birthday" value="{{old('birthday', ($user->birthday) ? date('Y-m-d', strtotime($user->birthday)) : '')}}" class="form-control" placeholder="" autocomplete="off">
+                                    <input type="date" name="birthday" value="{{old('birthday', (isset($user->birthday)) ? date('Y-m-d', strtotime($user->birthday)) : '')}}" class="form-control" placeholder="" autocomplete="off">
                                 </div>
                                 
                             </div>

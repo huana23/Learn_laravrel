@@ -74,6 +74,20 @@ class UserService implements UserServiceInterface
     
     }
 
+    public function destroy($id) {
+        DB::beginTransaction();
+        try{
+           $user = $this->userRepository->delete($id);
+
+            DB::commit();
+            return true;
+        }catch(\Exception $e) {
+            DB::rollBack();
+            echo $e->getMessage();die();
+            return false;
+        }
+    }
+
     private function coverBirthdayDate($birthday = '') {
         // Kiểm tra xem ngày có hợp lệ không trước khi xử lý
         if (!$birthday || !\Carbon\Carbon::hasFormat($birthday, 'Y-m-d')) {

@@ -123,4 +123,25 @@ class UserController extends Controller
         }
         return redirect()->route('user.index')->with('error', 'Cập Nhật bản ghi thất bại');
     }
+
+    public function delete($id) {
+        $template = 'backend.user.delete';
+        $config['seo'] = config('apps.user');
+        $user =$this->userRepository->findById($id);
+
+        
+        return view('backend.dashboard.layout' , compact(
+            'template',
+            'config',
+            'user',
+
+       ));
+    }
+
+    public function destroy($id) {
+        if($this->userService->destroy($id)){
+            return redirect()->route('user.index')->with('success', 'Xoá bản ghi thành công');
+        }
+        return redirect()->route('user.index')->with('error', 'Xoá bản ghi thất bại');
+    }
 }

@@ -37,6 +37,9 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->all();
     }
 
+    public function delete(int $id = 0) {
+        return $this->findById($id)->delete();
+    }
     public function findById(
         int $modelId,
         array $column = ['*'],

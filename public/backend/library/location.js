@@ -18,6 +18,7 @@
         
     };
     HT.sendDataTogetLocation = (option) => {
+        
         $.ajax ({
             url: 'ajax/location/getLocation',
             type: 'GET',
