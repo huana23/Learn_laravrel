@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Middleware\AuthenticateMiddleware;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\UserCatalogueController;
 use App\Http\Middleware\LoginMiddleware;
 use App\Http\Controllers\Ajax\LocationController;
 use App\Http\Controllers\Ajax\DashboardController as AjaxDashboardController;
@@ -52,12 +53,33 @@ Route::group(['prefix' => 'user'],  function () {
 
 });
 
+//user/catalogue/index
+Route::group(['prefix' => 'user/catalogue'],  function () {
+    Route::get('index', [UserCatalogueController::class, 'index'])->name('user.catalogue.index')->middleware('admin');
+    Route::get('create', [UserCatalogueController::class, 'create'])->name('user.catalogue.create')->middleware('admin');
+    Route::post('store', [UserCatalogueController::class, 'store'])->name('user.catalogue.store')->middleware('admin');
+    Route::get('{id}/edit', [UserCatalogueController::class, 'edit'])->where('id', '[0-9]+')->name('user.catalogue.edit')->middleware('admin');
+    Route::post('{id}/update', [UserCatalogueController::class, 'update'])->where('id', '[0-9]+')->name('user.catalogue.update')->middleware('admin');
+    Route::get('{id}/delete', [UserCatalogueController::class, 'delete'])->where('id', '[0-9]+')->name('user.catalogue.delete')->middleware('admin');
+    Route::delete('{id}/destroy', [UserCatalogueController::class, 'destroy'])->where('id', '[0-9]+')->name('user.catalogue.destroy')->middleware('admin');
+
+
+
+
+});
+
 // AJAX
 Route::get('user/ajax/location/getLocation', [LocationController::class, 'getLocation'])->name('ajax.location.index')->middleware(AuthenticateMiddleware::class);
 Route::get('user/{user_id}/ajax/location/getLocation', [LocationController::class, 'getLocation'])->name('ajax.location.index')->middleware(AuthenticateMiddleware::class);
 
 Route::post('user/ajax/dashboard/changeStatus', [AjaxDashboardController::class, 'changeStatus'])->name('ajax.dashboard.changeStatus')->middleware(AuthenticateMiddleware::class);
 Route::post('user/ajax/dashboard/changeStatusAll', [AjaxDashboardController::class, 'changeStatusAll'])->name('ajax.dashboard.changeStatusAll')->middleware(AuthenticateMiddleware::class);
+
+
+
+Route::post('user/catalogue/ajax/dashboard/changeStatus', [AjaxDashboardController::class, 'changeStatus'])->name('ajax.dashboard.changeStatus')->middleware(AuthenticateMiddleware::class);
+Route::post('user/catalogue/ajax/dashboard/changeStatusAll', [AjaxDashboardController::class, 'changeStatusAll'])->name('ajax.dashboard.changeStatusAll')->middleware(AuthenticateMiddleware::class);
+
 
 
 

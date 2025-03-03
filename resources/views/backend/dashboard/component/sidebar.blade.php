@@ -23,7 +23,7 @@
             <li class="active">
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">QL thành viên</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li class="active"><a href="dashboard_2.html">QL Nhóm thành viên</a></li>
+                    <li class="active"><a href="{{ route('user.catalogue.index') }}">QL Nhóm thành viên</a></li>
                     <li><a href="{{route('user.index')}}">QL thành viên</a></li>
                 </ul>
             </li>

@@ -50,7 +50,7 @@ class UserController extends Controller
             ]
         ];
         $config['seo'] = config('apps.user');
-        $template = 'backend.user.index';
+        $template = 'backend.user.user.index';
         return view('backend.dashboard.layout' , compact(
             'template',
             'config',
@@ -61,7 +61,7 @@ class UserController extends Controller
     public function create() {
 
         $provinces = $this->provinceRepository->all();
-        $template = 'backend.user.store';
+        $template = 'backend.user.user.store';
         $config = [
             'method' => 'create',
             'js' => [
@@ -95,7 +95,7 @@ class UserController extends Controller
     public function edit($id) {
         $user =$this->userRepository->findById($id);
         $provinces = $this->provinceRepository->all();
-        $template = 'backend.user.store';
+        $template = 'backend.user.user.store';
         $config = [
             'js' => [
                 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
@@ -127,7 +127,7 @@ class UserController extends Controller
     }
 
     public function delete($id) {
-        $template = 'backend.user.delete';
+        $template = 'backend.user.user.delete';
         $config['seo'] = config('apps.user');
         $user =$this->userRepository->findById($id);
 
