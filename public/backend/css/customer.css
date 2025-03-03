@@ -26,3 +26,7 @@
     margin-bottom: 15px;
     font-weight: 700;
 }
+
+.active-bg{
+    background-color: #ffc !important;
+}

@@ -33,6 +33,10 @@ class BaseRepository implements BaseRepositoryInterface
         return $model->update($payLoad);
     }
 
+    public function updateByWhereIn(string $whereInField ='', array $whereIn= [], array $payload =[]) {
+        return $this->model->whereIn($whereInField, $whereIn)->update($payload);
+    }
+
     public function all() {
         return $this->model->all();
     }

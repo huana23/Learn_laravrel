@@ -12,7 +12,7 @@
     
             <div class="d-flex align-items-center mr-3">
                 
-                <select name="user_catalogue_id" class="form-control mr-3">
+                <select name="user_catalogue_id" class="form-control mr-3 setupSelect2">
                     <option value="0" selected="selected">Chọn nhóm thành viên</option>
                     <option value="1">Quản trị viên</option>
                 </select>

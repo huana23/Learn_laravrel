@@ -89,6 +89,39 @@ class UserService implements UserServiceInterface
         }
     }
 
+    public function updateStatus($post = []) {
+        
+        DB::beginTransaction();
+        try{
+
+            $payLoad[$post['field']] = (($post['value']== 1) ? 0:1);
+            $user = $this->userRepository->update($post['modelId'], $payLoad  );
+
+            DB::commit();
+            return true;
+        }catch(\Exception $e) {
+            DB::rollBack();
+            echo $e->getMessage();die();
+            return false;
+        }
+    }
+
+
+    public function updateStatusAll($post){
+        DB::beginTransaction();
+        try{
+
+            $payLoad[$post['field']] = $post['value'];
+            $flag = $this->userRepository->updateByWhereIn('id', $post['id'],$payLoad);
+            DB::commit();
+            return true;
+        }catch(\Exception $e) {
+            DB::rollBack();
+            echo $e->getMessage();die();
+            return false;
+        }
+    }
+
     private function coverBirthdayDate($birthday = '') {
         // Kiểm tra xem ngày có hợp lệ không trước khi xử lý
         if (!$birthday || !\Carbon\Carbon::hasFormat($birthday, 'Y-m-d')) {

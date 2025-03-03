@@ -41,10 +41,12 @@ class UserController extends Controller
         $config =  [
             'js' => [
                 asset('backend/js/plugins/switchery/switchery.js'),
+                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
                 asset('backend/library/library.js')
             ],
             'css' => [
-                asset('backend/css/plugins/switchery/switchery.css')
+                asset('backend/css/plugins/switchery/switchery.css'),
+                'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
             ]
         ];
         $config['seo'] = config('apps.user');
