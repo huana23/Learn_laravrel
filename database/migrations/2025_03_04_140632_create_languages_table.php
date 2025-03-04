@@ -24,7 +24,9 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations lên nhánh dev
+     * Reverse the migrations 
+     * 
+     * PUSH in dev-an
      */
     public function down(): void
     {
