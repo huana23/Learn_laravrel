@@ -23,22 +23,22 @@ class DashboardController extends Controller
     private function config() {
         return [
             'js' => [
-                'backend/js/plugins/flot/jquery.flot.js',
-                'backend/js/plugins/flot/jquery.flot.tooltip.min.js',
-                'backend/js/plugins/flot/jquery.flot.spline.js',
-                'backend/js/plugins/flot/jquery.flot.resize.js',
-                'backend/js/plugins/flot/jquery.flot.pie.js',
-                'backend/js/plugins/flot/jquery.flot.symbol.js',
-                'backend/js/plugins/flot/jquery.flot.time.js',
-                'backend/js/plugins/peity/jquery.peity.min.js',
-                'backend/js/inspinia.js',
-                'backend/js/plugins/pace/pace.min.js',
-                'backend/js/demo/peity-demo.js',
-                'backend/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js',
-                'backend/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
-                'backend/js/plugins/easypiechart/jquery.easypiechart.js',
-                'backend/js/plugins/sparkline/jquery.sparkline.min.js',
-                'backend/js/demo/sparkline-demo.js'
+                asset('backend/js/plugins/flot/jquery.flot.js'),
+                asset('backend/js/plugins/flot/jquery.flot.tooltip.min.js'),
+                asset('backend/js/plugins/flot/jquery.flot.spline.js'),
+                asset('backend/js/plugins/flot/jquery.flot.resize.js'),
+                asset('backend/js/plugins/flot/jquery.flot.pie.js'),
+                asset('backend/js/plugins/flot/jquery.flot.symbol.js'),
+                asset('backend/js/plugins/flot/jquery.flot.time.js'),
+                asset('backend/js/plugins/peity/jquery.peity.min.js'),
+                asset('backend/js/inspinia.js'),
+                asset('backend/js/plugins/pace/pace.min.js'),
+                asset('backend/js/demo/peity-demo.js'),
+                asset('backend/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js'),
+                asset('backend/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'),
+                asset('backend/js/plugins/easypiechart/jquery.easypiechart.js'),
+                asset('backend/js/plugins/sparkline/jquery.sparkline.min.js'),
+                asset('backend/js/demo/sparkline-demo.js')
             ]
         ];
     }

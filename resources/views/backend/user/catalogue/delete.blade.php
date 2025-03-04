@@ -1,4 +1,4 @@
-@include('backend.dashboard.component.breadcrums',['title' => $config['seo']['create']['title']])
+@include('backend.dashboard.component.breadcrums',['title' => $config['seo']['delete']['title']])
 
 <form action="{{route('user.catalogue.destroy', $userCatalogue->id)}}" method="post">
     @csrf
